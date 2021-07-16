@@ -12,14 +12,16 @@ const Photos = {
     position: relative;
     top: 13.5rem;
     height: 80rem;
-    width: 100%;
     margin: 0;
+    padding: 0;
     .container {
       &__image {
         background: url(${main_picture_first}) center;
         background-size: cover;
         height: 80rem;
-        width: 100vw;
+        width: 99vw;
+        margin: 0;
+        padding: 0;
         object-fit: cover;
       }
       &__contents {
