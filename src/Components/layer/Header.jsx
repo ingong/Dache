@@ -8,7 +8,7 @@ const Head = {
     align-items: center;
     background-color: ${({ theme }) => theme.color.white};
     font: ${({ theme }) => theme.font.caption};
-    color: ${({ theme }) => theme.color.lightgray2};
+    color: ${({ theme }) => theme.color.gray2};
     height: 13.5rem;
     z-index: 1;
     width: 100vw;
@@ -24,7 +24,6 @@ const Head = {
     width: 50%;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     .logo__image {
       width: 16rem;
     }
@@ -37,10 +36,26 @@ const Head = {
         cursor: pointer;
       }
       margin-left: 22rem;
-      width: 40rem;
+      width: 48rem;
       display: flex;
       justify-content: space-between;
       font-size: 1.5rem;
+      div {
+        width: 12rem;
+      }
+      .upload {
+        &:hover {
+          & .upload__hide {
+            opacity: 1;
+          }
+        }
+        &__hide {
+          position: relative;
+          top: 2rem;
+          color: ${({ theme }) => theme.color.gray2};
+          opacity: 0;
+        }
+      }
     }
   `,
 };
@@ -55,7 +70,10 @@ const Header = () => {
         <div className="elements">
           <div className="home">Home</div>
           <div className="about">About Us</div>
-          <div className="upload">Upload</div>
+          <div className="upload">
+            Upload
+            <div className="upload__hide">Recommendations</div>
+          </div>
           <div className="login">Login</div>
         </div>
       </Head.Content>

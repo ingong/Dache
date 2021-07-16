@@ -1,30 +1,36 @@
 import React from 'react';
-import { getPictures } from 'lib/api/sample';
 import styled from 'styled-components';
 import GlobalStyle from './styles/GlobalStyle';
 import MainPage from './pages/Mainpage';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import RecommendPage from './pages/RecommendPage';
+import { Header, Footer } from 'Components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const Styled = {
   ContentWrapper: styled.main`
-    /* max-width: 1080px; */
     margin: 0 auto;
   `,
 };
 
 function App() {
-  const handleData = async () => {
-    const data = await getPictures();
-    console.log(data);
-  };
-
-  console.log(handleData);
   return (
-    <Styled.ContentWrapper>
+    <>
       <GlobalStyle />
-      <MainPage />
-      {/* <button onClick={handleData}></button> */}
-    </Styled.ContentWrapper>
+      <Router>
+        <Header />
+        <Styled.ContentWrapper>
+          <Switch>
+            <Route path="/" exact>
+              <MainPage />
+            </Route>
+            <Route path="/recommend" exact>
+              <RecommendPage />
+            </Route>
+          </Switch>
+        </Styled.ContentWrapper>
+        <Footer />
+      </Router>
+    </>
   );
 }
 
