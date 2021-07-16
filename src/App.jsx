@@ -7,7 +7,7 @@ import MainPage from './pages/Mainpage';
 
 const Styled = {
   ContentWrapper: styled.main`
-    max-width: 1080px;
+    /* max-width: 1080px; */
     margin: 0 auto;
   `,
 };
@@ -23,7 +23,7 @@ function App() {
     <Styled.ContentWrapper>
       <GlobalStyle />
       <MainPage />
-      <button onClick={handleData}>버튼입니다</button>
+      {/* <button onClick={handleData}></button> */}
     </Styled.ContentWrapper>
   );
 }
