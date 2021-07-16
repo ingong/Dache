@@ -24,16 +24,28 @@ const Recommend = {
       background-size: cover;
     }
     .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: absolute;
-      top: 0;
       height: 70rem;
       width: 100%;
       color: ${({ theme }) => theme.color.white};
-      background-color: ${({ theme }) => theme.color.black};
-      opacity: 0.5;
+      background-color: rgba(0, 0, 0, 0.5);
+      &__inner {
+        position: relative;
+        top: 30rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       &__btns-btn {
-        z-index: 1;
-        border-radius: 2rem;
+        border-radius: 0.5rem;
         height: 5rem;
         width: 20rem;
         background: url(${upload1}) center;
@@ -53,16 +65,19 @@ const MainRecommendLayer = () => {
     <Recommend.Wrapper>
       <section className="image"></section>
       <section className="container">
-        <div className="container__content">
-          <p className="title">내 방에 어울리는 명화 추천받기</p>
-          <p className="subtitle">Upload a picture of your room and get recommendations for matching masterpieces</p>
-          <p className="content">
-            나의 방 사진을 업로드하여 어울리는 명화를 추천받아보세요 다채 AI 큐레이터가 사진을 분석하여 가장 잘 어울리는 명화를 추천해줍니다
-          </p>
-        </div>
-        <div className="container__btns">
-          <button className="container__btns-btn" alt="upload"></button>
-        </div>
+        <section className="container__inner">
+          <div className="container__content">
+            <p className="title">내 방에 어울리는 명화 추천받기</p>
+            <p className="subtitle">Upload a picture of your room and get recommendations for matching masterpieces</p>
+            <p className="content">
+              나의 방 사진을 업로드하여 어울리는 명화를 추천받아보세요 다채 AI 큐레이터가 사진을 분석하여 가장 잘 어울리는 명화를
+              추천해줍니다
+            </p>
+          </div>
+          <div className="container__btns">
+            <button className="container__btns-btn" alt="upload"></button>
+          </div>
+        </section>
       </section>
     </Recommend.Wrapper>
   );
