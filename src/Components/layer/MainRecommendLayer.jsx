@@ -17,6 +17,9 @@ const Recommend = {
     margin: 0;
     object-fit: cover;
     position: relative;
+    input {
+      opacity: 0;
+    }
     .image {
       height: 70rem;
       width: 100%;
@@ -75,7 +78,9 @@ const MainRecommendLayer = () => {
             </p>
           </div>
           <div className="container__btns">
-            <button className="container__btns-btn" alt="upload"></button>
+            <button className="container__btns-btn" alt="upload">
+              <input type="file" />
+            </button>
           </div>
         </section>
       </section>

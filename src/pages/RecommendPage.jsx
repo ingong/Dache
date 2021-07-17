@@ -4,12 +4,13 @@ import { Header } from 'Components';
 import styled from 'styled-components';
 import { Picture } from 'Components';
 
+const TotalWrapper = styled.div``;
 const Wrapper = styled.div`
   position: relative;
-  padding: 0 25rem;
+  padding-left: 15rem;
   top: 18rem;
-  width: 70%;
-  height: 130rem;
+  width: 85%;
+  height: 150rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 `;
@@ -26,6 +27,7 @@ const RecommendPage = () => {
   return (
     <>
       <Header />
+
       <Wrapper>
         {pictures?.map(value => (
           <Picture value={value} />
