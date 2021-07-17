@@ -47,6 +47,9 @@ const Head = {
         width: 12rem;
       }
       .upload {
+        & .upload__visible {
+          color: ${({ theme }) => theme.color.gray2};
+        }
         &:hover {
           & .upload__hide {
             opacity: 1;
