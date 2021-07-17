@@ -20,12 +20,8 @@ function App() {
         <Header />
         <Styled.ContentWrapper>
           <Switch>
-            <Route path="/" exact>
-              <MainPage />
-            </Route>
-            <Route path="/recommend" exact>
-              <RecommendPage />
-            </Route>
+            <Route path="/" component={MainPage} exact />
+            <Route path="/recommend" component={RecommendPage} exact />
           </Switch>
         </Styled.ContentWrapper>
         <Footer />

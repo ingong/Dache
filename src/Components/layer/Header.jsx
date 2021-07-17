@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../assets/img/header_logo.png';
+import { useLocation, useHistory } from 'react-router';
+import { Link, withRouter } from 'react-router-dom';
+
 const Head = {
   Wrapper: styled.div`
     display: flex;
@@ -61,24 +64,72 @@ const Head = {
 };
 
 const Header = () => {
+  const location = useLocation();
+  const history = useHistory();
+
   return (
     <Head.Wrapper>
       <Head.Content>
-        <div className="logo">
+        <Link to="/">
           <img className="logo__image" src={logo} alt="logo" />
-        </div>
+        </Link>
         <div className="elements">
-          <div className="home">Home</div>
-          <div className="about">About Us</div>
-          <div className="upload">
-            Upload
-            <div className="upload__hide">Recommendations</div>
+          <div
+            className="home"
+            isSelect={location.pathname === '/'}
+            onClick={() => {
+              history.push('/');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            Home
           </div>
-          <div className="login">Login</div>
+          <div
+            className="about"
+            isSelect={location.pathname === '/'}
+            onClick={() => {
+              history.push('/');
+              window.scrollTo({ top: 700, behavior: 'smooth' });
+            }}
+          >
+            About Us
+          </div>
+          <div className="upload">
+            <div
+              className="upload__visible"
+              isSelect={location.pathname === '/'}
+              onClick={() => {
+                history.push('/');
+                window.scrollTo({ top: 1500, behavior: 'smooth' });
+              }}
+            >
+              Upload
+            </div>
+            <div
+              className="upload__hide"
+              isSelect={location.pathname === '/recommend'}
+              onClick={() => {
+                history.push('/recommend');
+                window.scrollTo({ top: 1500, behavior: 'smooth' });
+              }}
+            >
+              Recommendations
+            </div>
+          </div>
+          <div
+            className="login"
+            isSelect={location.pathname === '/'}
+            onClick={() => {
+              history.push('/');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            Login
+          </div>
         </div>
       </Head.Content>
     </Head.Wrapper>
   );
 };
 
-export default Header;
+export default withRouter(Header);

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { getPictures } from 'lib/api/sample';
+import { Header } from 'Components';
 
 const handleData = async () => {
   const data = await getPictures();
@@ -10,7 +11,11 @@ const RecommendPage = () => {
   useEffect(() => {
     handleData();
   }, []);
-  return <div></div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default RecommendPage;
