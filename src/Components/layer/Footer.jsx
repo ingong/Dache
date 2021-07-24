@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Styled = {
   Wrapper: styled.div`
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,9 +12,7 @@ const Styled = {
     font-size: 1.8rem;
     color: ${({ theme }) => theme.color.black};
     width: 100%;
-    height: 20rem;
-    margin: 0;
-    padding: 0;
+    height: 15rem;
     border-top: 1px solid;
     section {
       padding-bottom: 2rem;

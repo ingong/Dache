@@ -20,10 +20,10 @@ code {
 }
 
 .my-masonry-grid_column {
-  padding-left: 30px;
+  padding-left: 90px;
   background-clip: padding-box;
 }
 
 .my-masonry-grid_column > * {
-  margin-bottom: 30px;
+  margin-bottom: 90px;
 }

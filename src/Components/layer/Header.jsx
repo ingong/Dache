@@ -13,7 +13,7 @@ const Head = {
     font: ${({ theme }) => theme.font.caption};
     color: ${({ theme }) => theme.color.gray2};
     height: 13.5rem;
-    z-index: 1;
+    z-index: 2;
     width: 100vw;
     position: fixed;
     margin: 0;
@@ -121,9 +121,9 @@ const Header = () => {
           </div>
           <div
             className="login"
-            isSelect={location.pathname === '/'}
+            isSelect={location.pathname === '/login'}
             onClick={() => {
-              history.push('/');
+              history.push('/login');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >

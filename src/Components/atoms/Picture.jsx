@@ -1,53 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  width: 100%;
+  position: relative;
+`;
 const Image = styled.div`
-  height: 30rem;
-  width: 30rem;
+  width: 100%;
   position: relative;
   overflow: hidden;
-  div {
-    height: 30rem;
-    width: 30rem;
-    background-color: pink;
-    position: absolute;
-    top: 0;
-    opacity: 0;
-    z-index: 1;
-    overflow: hidden;
-  }
-  img {
-    position: absolute;
-    top: 0;
-    height: 30rem;
-    width: 30rem;
-    overflow: hidden;
-    margin: 0 auto;
-    transition: all 0.3s linear;
-  }
+  background-image: url(${props => props.value.img_path});
+  background-size: cover;
+  transition: all 0.3s linear;
+  z-index: 1;
+`;
+
+const Content = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background-color: pink;
+  overflow: hidden;
 `;
 
 const Picture = ({ value }) => {
   const handleChange = e => {
-    e.target.style.opacity = 1;
-    e.target.nextSibling.style.transform = 'scale(1.05)';
+    e.currentTarget.style.opacity = 0;
+    e.target.style.transform = 'scale(1.05)';
   };
   const handleOut = e => {
-    e.target.style.opacity = 0;
-    e.target.nextSibling.style.transform = 'scale(1.0)';
+    e.currentTarget.style.opacity = 1;
+    e.target.style.transform = 'scale(1.0)';
   };
 
   return (
-    <Image value={value}>
-      <div
-        className="content"
+    <Wrapper>
+      <Image
+        value={value}
         onMouseEnter={e => handleChange(e)}
         onMouseOut={e => {
           handleOut(e);
         }}
-      ></div>
-      <img src={value.img_path} alt="img" />
-    </Image>
+      ></Image>
+      <Content>Content</Content>
+    </Wrapper>
   );
 };
 
