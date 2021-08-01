@@ -5,9 +5,25 @@ const instance = axios.create({
   baseURL: apiServer,
 });
 
-export const getPictures = async () => {
+export const getDefault = async () => {
   try {
     const data = await instance.get('dachae/getDefaultRecommend');
+    console.log(data);
+    console.log('[SUCCESS] GET Picutures data');
+    return data.data;
+  } catch (e) {
+    console.log('[FAIL] GET Pictures data');
+    return null;
+  }
+};
+
+export const getRecommended = async body => {
+  try {
+    const data = await instance.post('dachae/setUploadAndRecommend/', body, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     console.log(data);
     console.log('[SUCCESS] GET Picutures data');
     return data.data;
