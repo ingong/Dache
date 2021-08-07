@@ -12,7 +12,7 @@ const Head = {
     background-color: ${({ theme }) => theme.color.white};
     font: ${({ theme }) => theme.font.caption};
     color: ${({ theme }) => theme.color.gray2};
-    height: 13.5rem;
+    height: 14rem;
     z-index: 2;
     width: 100vw;
     position: fixed;

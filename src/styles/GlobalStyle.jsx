@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
   margin-left: -30px;
   width: auto;
 }
+
 .my-masonry-grid_column {
   padding-left: 30px;
   background-clip: padding-box;

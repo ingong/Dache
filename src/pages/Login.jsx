@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
-import NaverIcon from 'assets/icon/ic_naver.svg';
-import KakaoIcon from 'assets/icon/ic_kakaotalk.svg';
 import Login from 'assets/img/main_picture_second.png';
 import KaKaoLogin from 'react-kakao-login';
 
@@ -124,7 +121,7 @@ class LoginLayer extends Component {
     };
   }
 
-  responseKaKao = res => {
+  responseKaKao = (res: any) => {
     this.setState({
       data: res,
     });
@@ -138,28 +135,20 @@ class LoginLayer extends Component {
   render() {
     return (
       <Styled.Wrapper>
-        <Styled.ImageContainer>
-          {/* <Main /> */}
-          {/* <SubTitle style={{ marginTop: '2.1rem' }} /> */}
-        </Styled.ImageContainer>
+        <Styled.ImageContainer></Styled.ImageContainer>
         <Styled.Section>
           <div className="content-wrapper">
             <h1>Dache 시작하기</h1>
             <KaKaoBtn
-              token={'1d5cddfd974a182f8edaf6455ff049e3'}
+              jsKey={'1d5cddfd974a182f8edaf6455ff049e3'}
               buttonText="KaKao"
               onSuccess={this.responseKaKao}
               onFailure={this.responseFail}
               getProfile={true}
-              // onClick={kakaoResponse}
               type="button"
               color={'#FEE500'}
-            >
-              {/* <img className="kakaotalkIcon" src={KakaoIcon} alt="kakakotalk" />
-              <div className="content">카카오톡으로 시작하기</div> */}
-            </KaKaoBtn>
+            ></KaKaoBtn>
             <Styled.Button type="button" color={'#1EC800'}>
-              <img className="naverIcon" src={NaverIcon} alt="naver" />
               <div className="content">네이버로 시작하기</div>
             </Styled.Button>
           </div>
@@ -168,59 +157,5 @@ class LoginLayer extends Component {
     );
   }
 }
-// const LoginLayer = () => {
-//   const kakaoResponse = async response => {
-//     const KAKAO_LOGIN_REDIRECT_URI = 'http://ec2-54-180-57-37.ap-northeast-2.compute.amazonaws.com/api/user/setKakaoLogin&prompt=none';
-//     const KAKAO_LOGOUT_REDIRECT_URI = 'http://ec2-54-180-57-37.ap-northeast-2.compute.amazonaws.com/api/user/setLogout';
-//     const KAKAO_SIGNUP_REDIRECT_URI = 'http://ec2-54-180-57-37.ap-northeast-2.compute.amazonaws.com/api/user/setKakaoSignup';
-//     const REST_API_KEY = '4e207a6290ab122cb5d87392763aa81d';
-//     let res = await axios.get(
-//       `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${KAKAO_LOGIN_REDIRECT_URI}`
-//       // {
-//       //   params: {
-//       //     code: response.response.access_token,
-//       //   },
-//       // }
-//     );
-//     console.log(response.response.access_token);
-//     console.log(response.response.access_token);
-//     console.log(res);
-//     console.log('clicked');
-//   };
-
-//   // const handleSuccess = async (token, social) => {
-//   // console.log(token);
-//   // const data = await postToken(token, social);
-//   // localStorage.setItem('token', data.token);
-//   // localStorage.setItem('ID', data.id);
-//   // window.open('http://localhost:3000', '_self');
-//   // };
-
-//   // 로그인 실패 시
-//   // const handleFailure = error => {
-//   //   console.log(error);
-//   // };
-//   return (
-//     <Styled.Wrapper>
-//       <Styled.ImageContainer>
-//         {/* <Main /> */}
-//         {/* <SubTitle style={{ marginTop: '2.1rem' }} /> */}
-//       </Styled.ImageContainer>
-//       <Styled.Section>
-//         <div className="content-wrapper">
-//           <h1>Dache 시작하기</h1>
-//           <Styled.Button onClick={kakaoResponse} type="button" color={'#FEE500'}>
-//             <img className="kakaotalkIcon" src={KakaoIcon} alt="kakakotalk" />
-//             <div className="content">카카오톡으로 시작하기</div>
-//           </Styled.Button>
-//           <Styled.Button type="button" color={'#1EC800'}>
-//             <img className="naverIcon" src={NaverIcon} alt="naver" />
-//             <div className="content">네이버로 시작하기</div>
-//           </Styled.Button>
-//         </div>
-//       </Styled.Section>
-//     </Styled.Wrapper>
-//   );
-// };
 
 export default LoginLayer;
