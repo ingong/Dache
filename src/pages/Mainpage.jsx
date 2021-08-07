@@ -3,18 +3,21 @@ import { PhotoLayer } from 'Components';
 import { InfoLayer } from 'Components';
 import { MainRecommendLayer } from 'Components';
 import { FunctionLayer } from 'Components';
+import { Footer } from 'Components';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
   margin: 0;
 `;
-const Mainpage = () => {
+const Mainpage = history => {
+  console.log(history);
   return (
     <Wrapper>
       <PhotoLayer />
       <InfoLayer />
-      <MainRecommendLayer />
+      <MainRecommendLayer history={history} />
       <FunctionLayer />
+      <Footer />
     </Wrapper>
   );
 };

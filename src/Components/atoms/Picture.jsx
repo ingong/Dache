@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   width: 100%;
   position: relative;
 `;
+
 const Image = styled.div`
   width: 100%;
   position: relative;

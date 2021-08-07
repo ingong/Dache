@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import main_recommend from 'assets/img/main_recommend.png';
 import upload1 from 'assets/icon/Home/upload1.png';
 import upload2 from 'assets/icon/Home/upload2.png';
+import axios from 'axios';
 const Recommend = {
   Wrapper: styled.div`
     display: flex;
@@ -59,6 +60,10 @@ const Recommend = {
         .text {
           line-height: 3rem;
           font-size: 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
       }
       &__btns-btn {
@@ -78,7 +83,23 @@ const Recommend = {
     }
   `,
 };
-const MainRecommendLayer = () => {
+
+const MainRecommendLayer = ({ history }) => {
+  let moveTo = history.history;
+  const [loading, setLoading] = useState(false);
+  const onImgchange = async event => {
+    const apiServer = 'http://ec2-54-180-57-37.ap-northeast-2.compute.amazonaws.com/api/';
+    const instance = axios.create({
+      baseURL: apiServer,
+    });
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+    const response = await instance.post('dachae/setUploadAndRecommend/', formData);
+    response && moveTo.push('/recommend');
+    console.log(response);
+    setLoading(true);
+  };
   return (
     <Recommend.Wrapper>
       <section className="image"></section>
@@ -86,16 +107,22 @@ const MainRecommendLayer = () => {
         <section className="container__inner">
           <div className="container__content">
             <div className="title">내 방에 어울리는 명화 추천받기</div>
-            <div className="subtitle">Upload a picture of your room and get recommendations for matching masterpieces</div>
+            <div className="subtitle">
+              Upload a picture of your room and get recommendations for matching masterpieces
+            </div>
             <div className="text">
-              나의 방 사진을 업로드하여 어울리는 명화를 추천받아보세요
-              <br />
-              다채 AI 큐레이터가 사진을 분석하여 가장 잘 어울리는 명화를 추천해줍니다
+              <div>나의 방 사진을 업로드하여 어울리는 명화를 추천받아보세요</div>
+              <div>다채 AI 큐레이터가 사진을 분석하여 가장 잘 어울리는 명화를 추천해줍니다</div>
             </div>
           </div>
           <div className="container__btns">
             <button className="container__btns-btn" alt="upload">
-              <input type="file" />
+              <input
+                type="file"
+                onChange={e => {
+                  onImgchange(e);
+                }}
+              />
             </button>
           </div>
         </section>
