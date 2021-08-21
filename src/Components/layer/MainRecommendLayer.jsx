@@ -96,8 +96,8 @@ const MainRecommendLayer = ({ history }) => {
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
     const response = await instance.post('dachae/setUploadAndRecommend/', formData);
-    response && moveTo.push('/recommend');
-    console.log(response);
+    let filtered = response.data.recommend_images;
+    response && moveTo.push({ pathname: '/recommend', state: { filtered: filtered } });
     setLoading(true);
   };
   return (

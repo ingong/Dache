@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getDefault, getRecommended } from 'lib/api/sample';
+import { getDefault } from 'lib/api/sample';
 import { Footer } from 'Components';
 import styled from 'styled-components';
-import { Picture } from 'Components';
+import { useLocation } from 'react-router';
 import Masonry from 'react-masonry-css';
 const Wrapper = styled.div`
   display: flex;
@@ -79,15 +79,22 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-const RecommendPage = () => {
+const RecommendPage = props => {
+  const location = useLocation();
   const [pictures, setPicture] = useState(null);
+  const [loading, setLoading] = useState(false);
+  let passedData;
+  if (location.state !== undefined) {
+    passedData = location.state.filtered;
+  }
+
   useEffect(() => {
     (async () => {
       const data = await getDefault();
       data && setPicture(data['recommend_images'].slice(0, 10));
       console.log(pictures);
     })();
-  }, []);
+  }, [loading]);
 
   const handleEnter = e => {
     e.currentTarget.firstChild.style.opacity = 0;
@@ -102,8 +109,7 @@ const RecommendPage = () => {
   };
 
   const handleClick = (e, url) => {
-    var win = window.open(url, '_blank');
-    win();
+    window.open(url, '_blank');
   };
   return (
     <>

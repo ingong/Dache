@@ -123,7 +123,6 @@ const Header = () => {
             className="login"
             isSelect={location.pathname === '/login'}
             onClick={() => {
-              history.push('/login');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
